@@ -13,7 +13,7 @@ services:
       - DB_USER=root
       - DB_PASSWORD=root
       - DB_NAME=siva
-      - GEMINI_API_KEY=AIzaSyA8DCB9stHgNL9xR3xp_l3MWeCGrxfbglk
+      - GEMINI_API_KEY="API"
     networks:
       - mynetwork
     depends_on:
