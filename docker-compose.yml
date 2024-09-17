@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=siva
+      - GEMINI_API_KEY=AIzaSyA8DCB9stHgNL9xR3xp_l3MWeCGrxfbglk
+    networks:
+      - mynetwork
+    depends_on:
+      - qdrant
+   
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+       - "6333:6333"
+       - "6334:6334"
+    networks:
+      - mynetwork   
+
+networks:
+  mynetwork:
+    driver: bridge
